@@ -1,0 +1,75 @@
+@startuml modelamento
+left to right direction
+
+class Pessoa {
+    - id: Long
+    - nome: String
+    - cpf: String
+    - email: String
+    - telefone: Telefone
+    - endereco: Endereco
+    - obs: String
+}
+
+class Paciente {
+    - nomeMae: String
+    - anotacao: String
+    - dataNascimento: LocalDate
+    - cartaoSus: String
+    - sexo: boolean
+}
+
+class Profissional {
+    - senha: String
+    - especialidade: String
+    - formacao: Formacao
+}
+
+class Exame {
+    - data: LocalDateTime
+    - resultado: String
+    - tipo: String
+    - paciente: Paciente
+    - equipe: Equipe
+}
+
+class Equipe {
+    - id: Long
+    - nome: String
+    - profissionais: Profissional
+}
+
+enum Formacao {
+    AGENTE
+    DENTISTA
+    AUX_ENFERMAGEM
+    TEC_ENFERMAGEM
+    MEDICINA
+    ENFERMAGEM
+}
+
+class Telefone {
+    - codigoArea: String
+    - numero: String
+}
+
+class Endereco {
+    - numero: int
+    - complemento: String
+    - bairro: String
+    - cidade: String
+    - estado: String
+    - cep: String
+}
+
+
+Pessoa "1" --* "1" Telefone
+Pessoa "1" --* "1" Endereco
+Paciente "1" --> "n" Exame
+Equipe "1" --o "n" Profissional
+Exame "n" --o "1" Equipe
+Formacao o-- Profissional
+
+Paciente --|> Pessoa
+Profissional --|> Pessoa
+@enduml
