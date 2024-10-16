@@ -1,9 +1,14 @@
 package org.acme.DTO;
 
-public record Exame {
-    LocalDateTime momento, 
-    String resultado, 
-    String tipo, 
-    String anotacao, 
-    Paciente paciente
+import java.time.LocalDateTime;
+import java.util.List;
+
+public record ExameDTO(
+    LocalDateTime momento,
+    String resultado,
+    String tipo,
+    String anotacao,
+    Long paciente,
+    List<Long> idProfissionais
+) {
 }

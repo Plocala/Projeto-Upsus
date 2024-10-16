@@ -1,7 +1,0 @@
-@startuml 
-
-class Animal {
-    - id: Long
-    - especie : String
-}
-@enduml

@@ -16,8 +16,7 @@ public class Pessoa extends DefaultEntity {
     private Telefone telefone;
     @Embedded
     private Endereco endereco;
-    @Column(length = 20, nullable = false)
-    private String obs;
+    
 
     public String getNome() {
         return nome;
@@ -59,12 +58,6 @@ public class Pessoa extends DefaultEntity {
         this.endereco = endereco;
     }
 
-    public String getObs() {
-        return obs;
-    }
-
-    public void setObs(String obs) {
-        this.obs = obs;
-    }
+    
 
 }
