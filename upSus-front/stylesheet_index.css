@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-color: #00414d;
+    color: white;
+    padding: 20px;
+    border-radius: 9px;
+    text-align: center;
+}
+.header h1 {
+    margin: 0;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 80%;
+}
+.card h2 {
+    margin-top: 0;
+}
+.task-summary, .task-priority, .messages {
+    display: flex;
+    justify-content: space-between;
+}
+.task-summary div, .task-priority div, .messages div {
+    flex: 1;
+    margin: 0 10px;
+}
+.messages {
+    align-items: center;
+}
+.messages img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
