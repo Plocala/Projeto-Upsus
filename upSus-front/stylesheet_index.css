@@ -1,48 +1,30 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
+    font-family: 'Helvetica', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
 }
-.header {
-    background-color: #00414d;
+header {
+    background-color: #007BFF;
     color: white;
-    padding: 20px;
-    border-radius: 9px;
-    text-align: center;
 }
-.header h1 {
-    margin: 0;
+.navbar {
+    margin-bottom: 20px;
 }
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
 }
 .card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.card-body {
     padding: 20px;
-    width: 80%;
 }
-.card h2 {
-    margin-top: 0;
-}
-.task-summary, .task-priority, .messages {
-    display: flex;
-    justify-content: space-between;
-}
-.task-summary div, .task-priority div, .messages div {
-    flex: 1;
-    margin: 0 10px;
-}
-.messages {
-    align-items: center;
-}
-.messages img {
-    border-radius: 50%;
-    margin-right: 10px;
+footer {
+    background-color: #f5f5f5;
+    color: #777;
 }
