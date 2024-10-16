@@ -1,0 +1,51 @@
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Tarefas para o dia por prioridade</h2>
+            <div class="task-priority">
+                <div>
+                    <p>Alexsandro Vieira</p>
+                </div>
+                <div>
+                    <p>Maria Izabel</p>
+                </div>
+                <div>
+                    <p>Francisca Viana</p>
+                </div>
+                <div>
+                    <p>Rochele</p>
+                </div>
+                <div>
+                    <p>Mais</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Últimas mensagens recebidas</h2>
+            <div class="messages">
+                <div>
+                    <img src="profile.jpg" alt="Foto de Perfil" width="50">
+                </div>
+                <div>
+                    <p><strong>Bruna Luisa</strong></p>
+                    <p>Ah! Entendi! Passo aí amanhã!</p>
+                </div>
+            </div>
+            <div class="messages">
+                <div>
+                    <img src="profile.jpg" alt="Foto de Perfil" width="50">
+                </div>
+                <div>
+                    <p><strong>Bruna Luisa</strong></p>
+                    <p>Ah! Entendi! Passo aí amanhã!</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Minhas conversas</h2>
+            <p>15</p>
+            <h2>Meu tempo médio de resposta</h2>
+            <p>1h45</p>
+        </div>
+    </div>
+</body>
