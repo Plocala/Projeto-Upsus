@@ -11,7 +11,6 @@ import jakarta.persistence.PreUpdate;
 
 @MappedSuperclass
 public class DefaultEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -53,7 +52,4 @@ public class DefaultEntity {
     public void setDataAlteracao(LocalDateTime dataAlteracao) {
         this.dataAlteracao = dataAlteracao;
     }
-
-    
-
 }
