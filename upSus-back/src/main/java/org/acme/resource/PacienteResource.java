@@ -1,6 +1,6 @@
 package org.acme.resource;
 
-import org.acme.dto.PacienteDTO;
+import org.acme.DTO.PacienteDTO;
 import org.acme.service.PacienteService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
