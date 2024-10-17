@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -19,8 +18,7 @@ public class Paciente extends Pessoa {
     private String nome;
     @Column(length = 50, nullable = false)
     private String nomeMae;
-    @Lob
-    @Column(nullable = false)
+    @Column(length = 3000,nullable = false)
     private String anotacao;
     @Column(nullable = false)
     private LocalDate dataNascimento;
@@ -38,6 +36,8 @@ public class Paciente extends Pessoa {
     
     @Column(length = 20, nullable = false)
     private String obs;
+
+    
 
     public String getObs() {
         return obs;

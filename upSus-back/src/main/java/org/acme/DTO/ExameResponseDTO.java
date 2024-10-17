@@ -10,7 +10,7 @@ public record ExameResponseDTO(
     String tipo,
     String anotacao,
     String momento,
-    Long paciente,
+    PacienteResponseDTO paciente,
     List<ProfissionalResponseDTO> profissionais
 ) { public static ExameResponseDTO valueOf(Exame exame){
         List<ProfissionalResponseDTO> profissionais = exame.getProfissional().stream().map(ProfissionalResponseDTO::valueOf).toList();
@@ -20,7 +20,7 @@ public record ExameResponseDTO(
             exame.getTipo(),
             exame.getAnotacao(),
             exame.getMomento().toString(),
-            exame.getPaciente().getId(),
+            PacienteResponseDTO.valueOf(exame.getPaciente()),
             profissionais
             
         );
