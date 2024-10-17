@@ -69,6 +69,7 @@ public class PacienteServiceImpl implements PacienteService {
 
     }
 
+    @SuppressWarnings("resource")
     public void validarId(long id) {
         if (pacienteRepository.findById(id) == null) {
             throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
