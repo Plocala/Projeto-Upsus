@@ -30,7 +30,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
         profissional.setNome(dto.nome());
         profissional.setEspecialidade(dto.especialidade());
         profissional.setSenha(dto.senha());
-        profissional.setFormacao(Formacao.value(dto.formacao()));
+        profissional.setFormacao(Formacao.valueOf(dto.formacao()));
         profissional.setCpf(dto.cpf());
         profissional.setEmail(dto.email());
         profissional.setTelefone(dto.telefone());
