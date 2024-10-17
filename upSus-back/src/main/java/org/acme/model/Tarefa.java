@@ -12,7 +12,7 @@ public class Tarefa extends DefaultEntity {
     @Column(length = 50, nullable = false)
     private String nome;
    
-    @Column(length = 200, nullable = false)
+    @Column(length = 600, nullable = false)
     private String descricao;
     @Column(nullable = false)
     private StatusTarefa status;

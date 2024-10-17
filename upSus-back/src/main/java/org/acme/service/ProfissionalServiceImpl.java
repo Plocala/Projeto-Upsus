@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.acme.DTO.ProfissionalDTO;
 import org.acme.DTO.ProfissionalResponseDTO;
+import org.acme.model.Endereco;
 import org.acme.model.Formacao;
 import org.acme.model.Profissional;
+import org.acme.model.Telefone;
 import org.acme.repository.ProfissionalRepository;
 import org.acme.util.Error;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -28,7 +30,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
         profissional.setNome(dto.nome());
         profissional.setEspecialidade(dto.especialidade());
         profissional.setSenha(dto.senha());
-        profissional.setFormacao(Formacao.value(dto.formacao()));
+        profissional.setFormacao(Formacao.valueOf(dto.formacao()));
         profissional.setCpf(dto.cpf());
         profissional.setEmail(dto.email());
         profissional.setTelefone(dto.telefone());
@@ -59,7 +61,13 @@ public class ProfissionalServiceImpl implements ProfissionalService {
         profissionalBanco.setFormacao(Formacao.value(dto.formacao()));
         profissionalBanco.setCpf(dto.cpf());
         profissionalBanco.setEmail(dto.email());
+
+        Telefone telefone = new Telefone();
+        telefone.setCodigoArea(dto.telefone().getCodigoArea());
+        telefone.setNumero(dto.telefone().getNumero());
         profissionalBanco.setTelefone(dto.telefone());
+        Endereco endereco = new Endereco();
+        endereco.setCep(dto.endereco().getCep());
         profissionalBanco.setEndereco(dto.endereco());
     }
 

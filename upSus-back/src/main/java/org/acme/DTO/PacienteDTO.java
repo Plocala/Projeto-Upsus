@@ -1,9 +1,8 @@
 package org.acme.DTO;
 
-import java.time.LocalDate;
-
 import org.acme.model.Endereco;
 import org.acme.model.Telefone;
+import java.util.List;
 
 public record PacienteDTO(
     String nome,
@@ -11,12 +10,13 @@ public record PacienteDTO(
     String email,
     String nomeMae,
     String anotacao,
-    LocalDate dataNascimento,
+    String dataNascimento,
     String cartaoSus,
     String obs,
     boolean sexo,
     Telefone telefone,
     Endereco endereco,
-    LocalDate dataUltimaConsulta
+    String dataUltimaConsulta,
+    List<Integer> condicaoIds
 ) {
 }

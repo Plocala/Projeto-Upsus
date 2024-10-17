@@ -9,7 +9,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -19,8 +18,7 @@ public class Paciente extends Pessoa {
     private String nome;
     @Column(length = 50, nullable = false)
     private String nomeMae;
-    @Lob
-    @Column(nullable = false)
+    @Column(length = 3000,nullable = false)
     private String anotacao;
     @Column(nullable = false)
     private LocalDate dataNascimento;
@@ -36,8 +34,21 @@ public class Paciente extends Pessoa {
     @JoinColumn(name = "tarefa_id")
     private List<Tarefa> tarefas = new ArrayList<>();
     
+    private List<Condicao> condicoes = new ArrayList<>();
+
+
+    public List<Condicao> getCondicoes() {
+        return condicoes;
+    }
+
+    public void setCondicoes(List<Condicao> condicoes) {
+        this.condicoes = condicoes;
+    }
+
     @Column(length = 20, nullable = false)
     private String obs;
+
+
 
     public String getObs() {
         return obs;
@@ -102,6 +113,7 @@ public class Paciente extends Pessoa {
     public void setDataUltimaConsulta(LocalDate dataUltimaConsulta) {
         this.dataUltimaConsulta = dataUltimaConsulta;
     }
+
     public List<Tarefa> getTarefas() {
         return tarefas;
     }
@@ -109,6 +121,5 @@ public class Paciente extends Pessoa {
     public void setTarefas(List<Tarefa> tarefas) {
         this.tarefas = tarefas;
     }
-
 
 }

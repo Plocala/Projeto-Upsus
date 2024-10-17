@@ -1,23 +1,19 @@
 package org.acme.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum Formacao {
-    ENFERMEIRO(1, "Enfermagem"),
-    TECENFERMAGEM(2, "Técnico de Enfermagem"),
-    AUXENFERMAGEM(3, "Auxiliar de Enfermagem"),
-    MEDICINA(4, "Medicina"),
-    AGENTE(5, "Agente de Saúde"),
-    DENTISTA(6, "Dentista");
+public enum Condicao {
+    GRAVIDAS(1, "Grávidas"),
+    FUMANTES(2, "Fumantes"),
+    IDOSOS(3, "Idosos");
 
     private int id;
     private String descricao;
 
-    Formacao(int id, String descricao) {
+    Condicao(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
@@ -30,31 +26,32 @@ public enum Formacao {
         return descricao;
     }
 
-    public static Formacao value(Integer id) {
+    public static Condicao value(Integer id) {
         if (id == null) {
             return null;
         }
 
-        for (Formacao x : Formacao.values()) {
+        for (Condicao x : Condicao.values()) {
             if (id.equals(x.getId())) {
                 return x;
             }
         }
 
-        throw new WebApplicationException("Id não encontrado: " + id, Response.Status.BAD_REQUEST);
+        throw new WebApplicationException("Id inválido: " + id, Response.Status.BAD_REQUEST);
     }
 
-    public static Formacao value(String descricao) {
+    public static Condicao value(String descricao) {
         if (descricao == null) {
             return null;
         }
 
-        for (Formacao x : Formacao.values()) {
+        for (Condicao x : Condicao.values()) {
             if (descricao.equals(x.getDescricao())) {
                 return x;
             }
         }
 
-        throw new WebApplicationException("Formação não encontrada: " + descricao, Response.Status.BAD_REQUEST);
+        throw new WebApplicationException("Descrição inválida: " + descricao, Response.Status.BAD_REQUEST);
     }
+
 }
