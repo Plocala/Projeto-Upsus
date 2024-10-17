@@ -16,5 +16,5 @@ public interface ProfissionalService {
     public List<ProfissionalResponseDTO> findByNome(String nome);
     public List<ProfissionalResponseDTO> findByEspecialidade(String especialidade);
     public List<ProfissionalResponseDTO> findByFormacao (String formacao);
-    
+    public boolean findByCpfAndSenha(String cpf, String senha);
 }

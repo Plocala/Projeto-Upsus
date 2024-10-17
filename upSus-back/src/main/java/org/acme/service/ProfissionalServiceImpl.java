@@ -112,5 +112,14 @@ public class ProfissionalServiceImpl implements ProfissionalService {
         return profissionalRepository.findByEspecialidade(especialidade).stream()
                 .map(e -> ProfissionalResponseDTO.valueOf(e)).toList();
     }
+
+    @Override
+    public boolean findByCpfAndSenha(String cpf, String senha) {
+        Profissional profissional = profissionalRepository.findByCpfAndSenha(cpf, senha);
+        if (profissional == null) {
+            return false;
+        }
+        return true;
+    }
     
 }
