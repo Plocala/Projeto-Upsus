@@ -4,17 +4,15 @@ import org.acme.model.Tarefa;
 
 public record TarefaResponseDTO(
     Long id,
+    String nome,
     String descricao,
-    String data,
-    String hora,
     String status
 ) {
     public static TarefaResponseDTO valueOf(Tarefa tarefa){
         return new TarefaResponseDTO(
             tarefa.getId(),
+            tarefa.getNome(),
             tarefa.getDescricao(),
-            tarefa.getData().toString(),
-            tarefa.getHora().toString(),
             tarefa.getStatus().getDescricao()
         );
     }

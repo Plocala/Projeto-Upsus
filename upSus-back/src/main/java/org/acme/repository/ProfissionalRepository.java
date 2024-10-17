@@ -24,8 +24,11 @@ public class ProfissionalRepository implements PanacheRepository<Profissional> {
         return find("cpf", cpf).firstResult();
     }
 
-    public Profissional findByFormacao(Formacao formacao) {
-        return find("formacao", formacao).firstResult();
+    public List<Profissional> findByFormacao(Formacao formacao) {
+        return find("formacao", formacao).list();
+    }
+    public List<Profissional> findByEspecialidade(String especialidade) {
+        return find("UPPER(especialidade) = like?1", "%"+especialidade+"%").list();
     }
     
 }
