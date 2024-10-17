@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.acme.DTO.PacienteDTO;
 import org.acme.DTO.PacienteResponseDTO;
+import org.acme.model.Condicao;
 import org.acme.model.Endereco;
 import org.acme.model.Paciente;
 import org.acme.model.Telefone;
@@ -19,6 +20,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class PacienteServiceImpl implements PacienteService {
@@ -31,13 +33,16 @@ public class PacienteServiceImpl implements PacienteService {
     public static String DATE_FORMAT_INPUT = "ddMMyyyy";
 
     @Override
+    @Transactional
     public PacienteResponseDTO create(@Valid PacienteDTO dto) {
         Paciente paciente = new Paciente();
         paciente.setNome(dto.nome());
         paciente.setNomeMae(dto.nomeMae());
         paciente.setDataNascimento(convert(dto.dataNascimento()));
         paciente.setCpf(dto.cpf());
-
+        paciente.setAnotacao(dto.anotacao());
+        paciente.setEmail(dto.email());
+        
         Telefone telefone = new Telefone();
         telefone.setCodigoArea(dto.telefone().getCodigoArea());
         telefone.setNumero(dto.telefone().getNumero());
@@ -58,6 +63,9 @@ public class PacienteServiceImpl implements PacienteService {
         paciente.setDataUltimaConsulta(convert(dto.dataUltimaConsulta()));
         paciente.setDataNascimento(convert(dto.dataNascimento()));
         pacienteRepository.persist(paciente);
+        paciente.setCondicoes(dto.condicaoIds().stream()
+            .map(Condicao::value)
+            .collect(Collectors.toList()));
         return PacienteResponseDTO.valueOf(paciente);
 
         
@@ -72,6 +80,7 @@ public class PacienteServiceImpl implements PacienteService {
         }
 
     @Override
+    @Transactional
     public void update(Long id, PacienteDTO dto) {
         validarId(id);
         Paciente paciente = pacienteRepository.findById(id);
@@ -79,6 +88,8 @@ public class PacienteServiceImpl implements PacienteService {
         paciente.setNomeMae(dto.nomeMae());
         paciente.setDataNascimento(convert(dto.dataNascimento()));
         paciente.setCpf(dto.cpf());
+        paciente.setAnotacao(dto.anotacao());
+        paciente.setEmail(dto.email());
 
         Telefone telefone = new Telefone();
         telefone.setCodigoArea(dto.telefone().getCodigoArea());
@@ -99,6 +110,9 @@ public class PacienteServiceImpl implements PacienteService {
         paciente.setObs(dto.obs());
         paciente.setDataUltimaConsulta(convert(dto.dataUltimaConsulta()));
         paciente.setDataNascimento(convert(dto.dataNascimento()));
+        paciente.setCondicoes(dto.condicaoIds().stream()
+            .map(Condicao::value)
+            .collect(Collectors.toList()));
         pacienteRepository.persist(paciente);
     }
 
@@ -180,6 +194,7 @@ public class PacienteServiceImpl implements PacienteService {
                 .map(e -> PacienteResponseDTO.valueOf(e)).toList();
     }
     @Override
+    @Transactional
     public void adicionarTarefa(Long id, Long idTarefa) {
         Paciente paciente = pacienteRepository.findById(id);
         paciente.getTarefas().add(tarefaRepository.findById(idTarefa)); 

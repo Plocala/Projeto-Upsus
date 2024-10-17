@@ -4,7 +4,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.acme.model.conveterjpa.CondicaoConverter;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
@@ -34,10 +37,21 @@ public class Paciente extends Pessoa {
     @JoinColumn(name = "tarefa_id")
     private List<Tarefa> tarefas = new ArrayList<>();
     
+    private List<Condicao> condicoes = new ArrayList<>();
+
+
+    public List<Condicao> getCondicoes() {
+        return condicoes;
+    }
+
+    public void setCondicoes(List<Condicao> condicoes) {
+        this.condicoes = condicoes;
+    }
+
     @Column(length = 20, nullable = false)
     private String obs;
 
-    
+
 
     public String getObs() {
         return obs;

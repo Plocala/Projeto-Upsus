@@ -2,6 +2,7 @@ package org.acme.DTO;
 
 import org.acme.model.Endereco;
 import org.acme.model.Telefone;
+import java.util.List;
 
 public record PacienteDTO(
     String nome,
@@ -15,6 +16,7 @@ public record PacienteDTO(
     boolean sexo,
     Telefone telefone,
     Endereco endereco,
-    String dataUltimaConsulta
+    String dataUltimaConsulta,
+    List<Integer> condicaoIds
 ) {
 }
