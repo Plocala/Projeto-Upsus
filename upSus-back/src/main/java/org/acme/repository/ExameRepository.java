@@ -21,5 +21,15 @@ public class ExameRepository implements PanacheRepository<Exame> {
     public List<Exame> findByPaciente(Long pacienteId) {
         return find("paciente", pacienteId).list();
     }
+    public List<Exame> findByTipo(String tipo) {
+        return find("UPPER(tipo)=like?1", "%" + tipo + "%").list();
+    }
+    public List<Exame> findByProfissional(Long profissionalId) {
+        return getEntityManager()
+                .createQuery("SELECT e FROM Exame e JOIN e.profissionais p WHERE p.id = :profissionalId", Exame.class)
+                .setParameter("profissionalId", profissionalId)
+                .getResultList();
+    }
     
+
 }

@@ -11,6 +11,7 @@ import org.acme.model.Paciente;
 import org.acme.model.Telefone;
 import org.acme.repository.PacienteRepository;
 import org.acme.repository.TarefaRepository;
+import org.acme.util.Error;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -18,8 +19,6 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response;
-
-import org.acme.util.Error;
 
 @ApplicationScoped
 public class PacienteServiceImpl implements PacienteService {
@@ -36,12 +35,14 @@ public class PacienteServiceImpl implements PacienteService {
         Paciente paciente = new Paciente();
         paciente.setNome(dto.nome());
         paciente.setNomeMae(dto.nomeMae());
-        paciente.setDataNascimento(dto.dataNascimento());
+        paciente.setDataNascimento(convert(dto.dataNascimento()));
         paciente.setCpf(dto.cpf());
+
         Telefone telefone = new Telefone();
         telefone.setCodigoArea(dto.telefone().getCodigoArea());
         telefone.setNumero(dto.telefone().getNumero());
         paciente.setTelefone(telefone);
+
         Endereco endereco = new Endereco();
         endereco.setCep(dto.endereco().getCep());
         endereco.setBairro(dto.endereco().getBairro());
@@ -50,6 +51,12 @@ public class PacienteServiceImpl implements PacienteService {
         endereco.setCidade(dto.endereco().getCidade());
         endereco.setNumero(dto.endereco().getNumero());
         paciente.setEndereco(endereco);
+         
+        paciente.setCartaoSus(dto.cartaoSus());
+        paciente.setSexo(dto.sexo());
+        paciente.setObs(dto.obs());
+        paciente.setDataUltimaConsulta(convert(dto.dataUltimaConsulta()));
+        paciente.setDataNascimento(convert(dto.dataNascimento()));
         pacienteRepository.persist(paciente);
         return PacienteResponseDTO.valueOf(paciente);
 
@@ -66,8 +73,33 @@ public class PacienteServiceImpl implements PacienteService {
 
     @Override
     public void update(Long id, PacienteDTO dto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        validarId(id);
+        Paciente paciente = pacienteRepository.findById(id);
+        paciente.setNome(dto.nome());
+        paciente.setNomeMae(dto.nomeMae());
+        paciente.setDataNascimento(convert(dto.dataNascimento()));
+        paciente.setCpf(dto.cpf());
+
+        Telefone telefone = new Telefone();
+        telefone.setCodigoArea(dto.telefone().getCodigoArea());
+        telefone.setNumero(dto.telefone().getNumero());
+        paciente.setTelefone(telefone);
+
+        Endereco endereco = new Endereco();
+        endereco.setCep(dto.endereco().getCep());
+        endereco.setBairro(dto.endereco().getBairro());
+        endereco.setCidade(dto.endereco().getCidade());
+        endereco.setComplemento(dto.endereco().getComplemento());
+        endereco.setCidade(dto.endereco().getCidade());
+        endereco.setNumero(dto.endereco().getNumero());
+        paciente.setEndereco(endereco);
+         
+        paciente.setCartaoSus(dto.cartaoSus());
+        paciente.setSexo(dto.sexo());
+        paciente.setObs(dto.obs());
+        paciente.setDataUltimaConsulta(convert(dto.dataUltimaConsulta()));
+        paciente.setDataNascimento(convert(dto.dataNascimento()));
+        pacienteRepository.persist(paciente);
     }
 
      @Override

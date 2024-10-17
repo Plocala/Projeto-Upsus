@@ -48,4 +48,5 @@ public class PacienteRepository implements PanacheRepository<Paciente> {
     public List<Paciente> findByObs(String obs) {
         return find("UPPER(obs) = ?1", "%" + obs + "%").list();
     }
+    
 }
