@@ -63,4 +63,10 @@ public class ProfissionalResource {
         profissionalService.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }
+
+    @GET
+    @Path("/login")
+    public Response login(@QueryParam("cpf") String cpf, @QueryParam("senha") String senha) {
+        return Response.ok(profissionalService.findByCpfAndSenha(cpf, senha)).build();
+    }
 }

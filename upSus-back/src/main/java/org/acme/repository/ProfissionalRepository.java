@@ -24,6 +24,10 @@ public class ProfissionalRepository implements PanacheRepository<Profissional> {
         return find("cpf", cpf).firstResult();
     }
 
+    public Profissional findByCpfAndSenha(String cpf, String senha) {
+        return find("cpf = ?1 and senha = ?2", cpf, senha).firstResult();
+    }
+
     public List<Profissional> findByFormacao(Formacao formacao) {
         return find("formacao", formacao).list();
     }
