@@ -32,6 +32,7 @@ public class ExameServiceImpl implements ExameService {
     @Inject
     ProfissionalRepository profissionalRepository;
 
+    @SuppressWarnings("resource")
     @Override
     @Transactional
     public ExameResponseDTO create(@Valid ExameDTO dto) {
