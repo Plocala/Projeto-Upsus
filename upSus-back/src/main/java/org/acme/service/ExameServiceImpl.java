@@ -1,7 +1,6 @@
 package org.acme.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.acme.DTO.ExameDTO;
 import org.acme.DTO.ExameResponseDTO;
@@ -32,7 +31,6 @@ public class ExameServiceImpl implements ExameService {
     @Inject
     ProfissionalRepository profissionalRepository;
 
-    @SuppressWarnings("resource")
     @Override
     @Transactional
     public ExameResponseDTO create(@Valid ExameDTO dto) {
@@ -58,6 +56,7 @@ public class ExameServiceImpl implements ExameService {
         }
     }
 
+    @SuppressWarnings("resource")
     @Override
     @Transactional
     public void update(Long id, ExameDTO dto) {
