@@ -27,7 +27,7 @@ public class TarefaServiceImpl implements TarefaService {
         Tarefa tarefa = new Tarefa();
         tarefa.setNome(dto.nome());
         tarefa.setDescricao(dto.descricao());
-        tarefa.setStatus(StatusTarefa.valueOf(dto.status()));
+        tarefa.setStatus(StatusTarefa.value(dto.status()));
         tarefaRepository.persist(tarefa);
         return TarefaResponseDTO.valueOf(tarefa);
     }
@@ -49,7 +49,7 @@ public class TarefaServiceImpl implements TarefaService {
 
         tarefaBanco.setNome(dto.nome());
         tarefaBanco.setDescricao(dto.descricao());
-        tarefaBanco.setStatus(StatusTarefa.valueOf(dto.status()));
+        tarefaBanco.setStatus(StatusTarefa.value(dto.status()));
     }
 
     @Override
