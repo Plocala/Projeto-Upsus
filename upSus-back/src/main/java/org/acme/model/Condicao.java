@@ -8,7 +8,8 @@ import jakarta.ws.rs.core.Response;
 public enum Condicao {
     GRAVIDAS(1, "Grávidas"),
     FUMANTES(2, "Fumantes"),
-    IDOSOS(3, "Idosos");
+    IDOSOS(3, "Idosos"),
+    DIABETICOS(4, "Diabéticos");
 
     private int id;
     private String descricao;

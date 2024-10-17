@@ -15,8 +15,6 @@ import jakarta.persistence.OneToMany;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Paciente extends Pessoa {
     @Column(length = 50, nullable = false)
-    private String nome;
-    @Column(length = 50, nullable = false)
     private String nomeMae;
     @Column(length = 3000,nullable = false)
     private String anotacao;

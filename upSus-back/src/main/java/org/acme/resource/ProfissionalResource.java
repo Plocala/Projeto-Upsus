@@ -65,8 +65,10 @@ public class ProfissionalResource {
     }
 
     @GET
-    @Path("/login")
-    public Response login(@QueryParam("cpf") String cpf, @QueryParam("senha") String senha) {
+    @Path("/login/{cpf}/senha/{senha}")
+    public Response findByCpfAndSenha(@QueryParam("cpf") String cpf, @QueryParam("senha") String senha) {
         return Response.ok(profissionalService.findByCpfAndSenha(cpf, senha)).build();
     }
+
+
 }
