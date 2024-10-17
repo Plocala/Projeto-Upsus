@@ -49,17 +49,7 @@ public class ExameServiceImpl implements ExameService {
         }
         exame.setPaciente(paciente);
 
-        List<Profissional> profissionais = dto.idProfissionais().stream()
-                .map(profissionalId -> {
-                    Profissional profissional = profissionalRepository.findById(profissionalId);
-                    if (profissional == null) {
-                        throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
-                                .entity(new Error("404", "Profissional não encontrado para o ID fornecido: " + profissionalId))
-                                .build());
-                    }
-                    return profissional;
-                })
-                .collect(Collectors.toList());
+        Profissional profissionais = profissionalRepository.findById(dto.idProfissional());
         exame.setProfissional(profissionais);
 
         exameRepository.persist(exame);
@@ -93,18 +83,9 @@ public class ExameServiceImpl implements ExameService {
         }
         exameBanco.setPaciente(paciente);
 
-        List<Profissional> profissionais = dto.idProfissionais().stream()
-                .map(profissionalId -> {
-                    Profissional profissional = profissionalRepository.findById(profissionalId);
-                    if (profissional == null) {
-                        throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
-                                .entity(new Error("404", "Profissional não encontrado para o ID fornecido: " + profissionalId))
-                                .build());
-                    }
-                    return profissional;
-                })
-                .collect(Collectors.toList());
-        exameBanco.setProfissional(profissionais);
+        
+        Profissional profissional = profissionalRepository.findById(dto.idProfissional());
+        exameBanco.setProfissional(profissional);
     }
 
     @Override

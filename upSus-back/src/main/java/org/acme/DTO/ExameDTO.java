@@ -9,6 +9,6 @@ public record ExameDTO(
     String tipo,
     String anotacao,
     Long paciente,
-    List<Long> idProfissionais
+    Long idProfissional
 ) {
 }

@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
@@ -27,11 +28,12 @@ public class Exame extends DefaultEntity {
     @JoinColumn(name = "paciente_id", nullable = false)
     private Paciente paciente;
 
-    @ManyToMany(mappedBy = "exames")
-    private List<Profissional> profissionais = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "profissional_id", nullable = false)
+    private Profissional profissional;
 
-    public void setProfissional(List<Profissional> profissionais) {
-        this.profissionais = profissionais;
+    public void setProfissional(Profissional profissional) {
+        this.profissional = profissional;
     }
 
     public String getAnotacao() {
@@ -74,8 +76,8 @@ public class Exame extends DefaultEntity {
         this.paciente = paciente;
     }
 
-    public List<Profissional> getProfissional() {
-        return profissionais;
+    public Profissional getProfissional() {
+        return profissional;
     }
 
 }

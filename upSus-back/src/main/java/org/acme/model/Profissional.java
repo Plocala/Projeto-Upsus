@@ -10,6 +10,8 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -22,12 +24,7 @@ public class Profissional extends Pessoa {
     @Column(nullable = false)
     private Formacao formacao;
 
-    @ManyToMany
-    @JoinTable(
-        name = "profissional_exame",
-        joinColumns = @JoinColumn(name = "profissional_id"),
-        inverseJoinColumns = @JoinColumn(name = "exame_id")
-    )
+    @OneToMany(mappedBy = "profissional")
     private List<Exame> exames = new ArrayList<>();
 
     public List<Exame> getExames() {
