@@ -21,4 +21,5 @@ public interface PacienteService {
     public PacienteResponseDTO findByCpf(String cpf);
     public List<PacienteResponseDTO> findBySexo(boolean sexo);
     public List<PacienteResponseDTO> findByObs(String obs);
+    public void adicionarTarefa(Long id, Long idTarefa);
 }

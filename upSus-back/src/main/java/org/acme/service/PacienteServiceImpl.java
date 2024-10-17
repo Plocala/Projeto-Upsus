@@ -10,6 +10,7 @@ import org.acme.model.Endereco;
 import org.acme.model.Paciente;
 import org.acme.model.Telefone;
 import org.acme.repository.PacienteRepository;
+import org.acme.repository.TarefaRepository;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -24,6 +25,9 @@ import org.acme.util.Error;
 public class PacienteServiceImpl implements PacienteService {
     @Inject
     PacienteRepository pacienteRepository;
+
+    @Inject
+    TarefaRepository tarefaRepository;
 
     public static String DATE_FORMAT_INPUT = "ddMMyyyy";
 
@@ -143,6 +147,10 @@ public class PacienteServiceImpl implements PacienteService {
         return pacienteRepository.findByObs(obs).stream()
                 .map(e -> PacienteResponseDTO.valueOf(e)).toList();
     }
-    
+    @Override
+    public void adicionarTarefa(Long id, Long idTarefa) {
+        Paciente paciente = pacienteRepository.findById(id);
+        paciente.getTarefas().add(tarefaRepository.findById(idTarefa)); 
+    }
     
 }
