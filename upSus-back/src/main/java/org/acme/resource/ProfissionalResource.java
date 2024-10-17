@@ -69,6 +69,6 @@ public class ProfissionalResource {
     public Response findByCpfAndSenha(@QueryParam("cpf") String cpf, @QueryParam("senha") String senha) {
         return Response.ok(profissionalService.findByCpfAndSenha(cpf, senha)).build();
     }
-
+    
 
 }
