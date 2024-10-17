@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 -- This file allow to write SQL commands that will be emitted in test and dev.
 -- The commands are commented as their support depends of the database
 -- insert into myentity (id, field) values(1, 'field-1');
@@ -32,3 +33,5 @@ insert into profissional_exame (exame_id, profissional_id) values
 insert into tarefa (id, status, dataalteracao, datacadastro, nome, descricao) values
 (1, 1, '2023-01-01', '2023-01-01', 'Tarefa 1', 'Descricao da Tarefa 1'),
 (2, 2, '2023-01-02', '2023-01-02', 'Tarefa 2', 'Descricao da Tarefa 2');
+=======
+>>>>>>> Stashed changes

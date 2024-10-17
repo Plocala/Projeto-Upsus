@@ -7,7 +7,11 @@ import org.acme.DTO.ProfissionalResponseDTO;
 import org.acme.model.Endereco;
 import org.acme.model.Formacao;
 import org.acme.model.Profissional;
+<<<<<<< Updated upstream
 import org.acme.model.Telefone;
+=======
+import org.acme.model.StatusTarefa;
+>>>>>>> Stashed changes
 import org.acme.repository.ProfissionalRepository;
 import org.acme.util.Error;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -30,7 +34,7 @@ public class ProfissionalServiceImpl implements ProfissionalService {
         profissional.setNome(dto.nome());
         profissional.setEspecialidade(dto.especialidade());
         profissional.setSenha(dto.senha());
-        profissional.setFormacao(Formacao.value(dto.formacao()));
+        profissional.setFormacao(Formacao.valueOf(dto.formacao()));
         profissional.setCpf(dto.cpf());
         profissional.setEmail(dto.email());
         profissional.setTelefone(dto.telefone());

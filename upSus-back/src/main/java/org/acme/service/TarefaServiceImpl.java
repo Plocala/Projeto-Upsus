@@ -28,7 +28,6 @@ public class TarefaServiceImpl implements TarefaService {
         tarefa.setNome(dto.nome());
         tarefa.setDescricao(dto.descricao());
         tarefa.setStatus(StatusTarefa.valueOf(dto.status()));
-
         tarefaRepository.persist(tarefa);
         return TarefaResponseDTO.valueOf(tarefa);
     }

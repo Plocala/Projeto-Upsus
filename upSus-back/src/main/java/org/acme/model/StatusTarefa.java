@@ -39,7 +39,7 @@ public enum StatusTarefa {
             }
         }
 
-        throw new WebApplicationException("Id inválido: " + id, Response.Status.BAD_REQUEST);
+        throw new WebApplicationException("Id não encontrado: " + id, Response.Status.BAD_REQUEST);
     }
 
     public static StatusTarefa value(String descricao) {
@@ -53,6 +53,6 @@ public enum StatusTarefa {
             }
         }
 
-        throw new WebApplicationException("Descrição inválida: " + descricao, Response.Status.BAD_REQUEST);
+        throw new WebApplicationException("Status não encontrado: " + descricao, Response.Status.BAD_REQUEST);
     }
 }

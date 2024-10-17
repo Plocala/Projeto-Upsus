@@ -11,8 +11,12 @@ import jakarta.persistence.InheritanceType;
 public class Tarefa extends DefaultEntity {
     @Column(length = 50, nullable = false)
     private String nome;
+<<<<<<< Updated upstream
    
     @Column(length = 600, nullable = false)
+=======
+    @Column(length = 200, nullable = false)
+>>>>>>> Stashed changes
     private String descricao;
     @Column(nullable = false)
     private StatusTarefa status;

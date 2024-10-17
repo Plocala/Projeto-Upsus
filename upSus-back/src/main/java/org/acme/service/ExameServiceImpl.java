@@ -80,7 +80,6 @@ public class ExameServiceImpl implements ExameService {
     public void update(Long id, ExameDTO dto) {
         validarId(id);
         Exame exameBanco = exameRepository.findById(id);
-
         exameBanco.setMomento(dto.momento());
         exameBanco.setResultado(dto.resultado());
         exameBanco.setTipo(dto.tipo());
