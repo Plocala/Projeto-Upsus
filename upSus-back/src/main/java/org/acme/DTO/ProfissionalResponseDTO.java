@@ -12,9 +12,9 @@ public record ProfissionalResponseDTO(
     String cpf,
     String email,
     String telefone,
-    List<ExameResponseDTO> exames
+    List<ExameResponseDTOSimple> exames
 ) { public static ProfissionalResponseDTO valueOf(Profissional profissional){
-    List<ExameResponseDTO> exames = profissional.getExames().stream().map(ExameResponseDTO::valueOf).toList();
+    List<ExameResponseDTOSimple> exames = profissional.getExames().stream().map(ExameResponseDTOSimple::valueOf).toList();
         return new ProfissionalResponseDTO(
             profissional.getId(),
             profissional.getEspecialidade(),

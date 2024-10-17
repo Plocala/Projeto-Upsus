@@ -40,17 +40,9 @@ public class ExameServiceImpl implements ExameService {
         exame.setResultado(dto.resultado());
         exame.setTipo(dto.tipo());
         exame.setAnotacao(dto.anotacao());
+        exame.setPaciente(pacienteRepository.findById(dto.paciente()));
 
-        Paciente paciente = pacienteRepository.findById(dto.paciente());
-        if (paciente == null) {
-            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
-                    .entity(new Error("404", "Paciente não encontrado para o ID fornecido: " + dto.paciente()))
-                    .build());
-        }
-        exame.setPaciente(paciente);
-
-        Profissional profissionais = profissionalRepository.findById(dto.idProfissional());
-        exame.setProfissional(profissionais);
+        exame.setProfissional(profissionalRepository.findById(dto.idProfissional()));
 
         exameRepository.persist(exame);
         return ExameResponseDTO.valueOf(exame);
