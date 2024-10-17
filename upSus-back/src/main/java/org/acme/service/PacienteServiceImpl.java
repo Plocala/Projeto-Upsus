@@ -42,11 +42,6 @@ public class PacienteServiceImpl implements PacienteService {
         paciente.setCpf(dto.cpf());
         paciente.setAnotacao(dto.anotacao());
         paciente.setEmail(dto.email());
-<<<<<<< Updated upstream
-        
-=======
-
->>>>>>> Stashed changes
         Telefone telefone = new Telefone();
         telefone.setCodigoArea(dto.telefone().getCodigoArea());
         telefone.setNumero(dto.telefone().getNumero());
