@@ -42,7 +42,11 @@ public class PacienteServiceImpl implements PacienteService {
         paciente.setCpf(dto.cpf());
         paciente.setAnotacao(dto.anotacao());
         paciente.setEmail(dto.email());
+<<<<<<< Updated upstream
         
+=======
+
+>>>>>>> Stashed changes
         Telefone telefone = new Telefone();
         telefone.setCodigoArea(dto.telefone().getCodigoArea());
         telefone.setNumero(dto.telefone().getNumero());
@@ -56,7 +60,7 @@ public class PacienteServiceImpl implements PacienteService {
         endereco.setCidade(dto.endereco().getCidade());
         endereco.setNumero(dto.endereco().getNumero());
         paciente.setEndereco(endereco);
-         
+
         paciente.setCartaoSus(dto.cartaoSus());
         paciente.setSexo(dto.sexo());
         paciente.setObs(dto.obs());
@@ -68,16 +72,15 @@ public class PacienteServiceImpl implements PacienteService {
             .collect(Collectors.toList()));
         return PacienteResponseDTO.valueOf(paciente);
 
-        
     }
 
     public void validarId(long id) {
         if (pacienteRepository.findById(id) == null) {
-                throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
-                        .entity(new Error("404", "Paciente não encontrado para o ID fornecido: " + id))
-                        .build());
-            }
+            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND)
+                    .entity(new Error("404", "Paciente não encontrado para o ID fornecido: " + id))
+                    .build());
         }
+    }
 
     @Override
     @Transactional
@@ -104,7 +107,7 @@ public class PacienteServiceImpl implements PacienteService {
         endereco.setCidade(dto.endereco().getCidade());
         endereco.setNumero(dto.endereco().getNumero());
         paciente.setEndereco(endereco);
-         
+
         paciente.setCartaoSus(dto.cartaoSus());
         paciente.setSexo(dto.sexo());
         paciente.setObs(dto.obs());
@@ -116,7 +119,7 @@ public class PacienteServiceImpl implements PacienteService {
         pacienteRepository.persist(paciente);
     }
 
-     @Override
+    @Override
     @Transactional
     public void delete(Long id) {
         validarId(id);
@@ -151,20 +154,24 @@ public class PacienteServiceImpl implements PacienteService {
         return pacienteRepository.findByNomeMae(nomeMae).stream()
                 .map(e -> PacienteResponseDTO.valueOf(e)).toList();
     }
+
     public static LocalDate convert(String dateStr) {
         return LocalDate.parse(dateStr, DateTimeFormatter.ofPattern(DATE_FORMAT_INPUT));
     }
+
     @Override
     public List<PacienteResponseDTO> findByDataNascimento(String dataInicio, String dataFim) {
 
         return pacienteRepository.findByBirth(convert(dataInicio), convert(dataFim)).stream()
                 .map(e -> PacienteResponseDTO.valueOf(e)).toList();
     }
+
     @Override
     public List<PacienteResponseDTO> findByLastConsult(String dataInicio, String dataFim) {
         return pacienteRepository.findByLastConsult(convert(dataInicio), convert(dataFim)).stream()
                 .map(e -> PacienteResponseDTO.valueOf(e)).toList();
     }
+
     @Override
     public PacienteResponseDTO findByCartaoSus(String cartaoSus) {
         Paciente paciente = pacienteRepository.findByCartaoSus(cartaoSus);
@@ -173,6 +180,7 @@ public class PacienteServiceImpl implements PacienteService {
         }
         return PacienteResponseDTO.valueOf(paciente);
     }
+
     @Override
     public PacienteResponseDTO findByCpf(String cpf) {
         Paciente paciente = pacienteRepository.findByCpf(cpf);
@@ -181,7 +189,7 @@ public class PacienteServiceImpl implements PacienteService {
         }
         return PacienteResponseDTO.valueOf(paciente);
     }
-    
+
     @Override
     public List<PacienteResponseDTO> findBySexo(boolean sexo) {
         return pacienteRepository.findBySexo(sexo).stream()
@@ -193,11 +201,12 @@ public class PacienteServiceImpl implements PacienteService {
         return pacienteRepository.findByObs(obs).stream()
                 .map(e -> PacienteResponseDTO.valueOf(e)).toList();
     }
+
     @Override
     @Transactional
     public void adicionarTarefa(Long id, Long idTarefa) {
         Paciente paciente = pacienteRepository.findById(id);
-        paciente.getTarefas().add(tarefaRepository.findById(idTarefa)); 
+        paciente.getTarefas().add(tarefaRepository.findById(idTarefa));
     }
-    
+
 }

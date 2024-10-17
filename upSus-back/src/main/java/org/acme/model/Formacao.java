@@ -12,7 +12,7 @@ public enum Formacao {
     AUXENFERMAGEM(3, "Auxiliar de Enfermagem"),
     MEDICINA(4, "Medicina"),
     AGENTE(5, "Agente de Saúde"),
-    DENTISTA(6, "Dentista"),;
+    DENTISTA(6, "Dentista");
 
     private int id;
     private String descricao;
@@ -41,7 +41,7 @@ public enum Formacao {
             }
         }
 
-        throw new WebApplicationException("Id inválido: " + id, Response.Status.BAD_REQUEST);
+        throw new WebApplicationException("Id não encontrado: " + id, Response.Status.BAD_REQUEST);
     }
 
     public static Formacao value(String descricao) {
@@ -55,6 +55,6 @@ public enum Formacao {
             }
         }
 
-        throw new WebApplicationException("Descrição inválida: " + descricao, Response.Status.BAD_REQUEST);
+        throw new WebApplicationException("Formação não encontrada: " + descricao, Response.Status.BAD_REQUEST);
     }
 }

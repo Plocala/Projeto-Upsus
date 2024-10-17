@@ -18,7 +18,11 @@ public class Paciente extends Pessoa {
     private String nome;
     @Column(length = 50, nullable = false)
     private String nomeMae;
+<<<<<<< Updated upstream
     @Column(length = 3000,nullable = false)
+=======
+    @Column(length = 3000, nullable = false)
+>>>>>>> Stashed changes
     private String anotacao;
     @Column(nullable = false)
     private LocalDate dataNascimento;
@@ -33,6 +37,7 @@ public class Paciente extends Pessoa {
     @OneToMany
     @JoinColumn(name = "tarefa_id")
     private List<Tarefa> tarefas = new ArrayList<>();
+<<<<<<< Updated upstream
     
     private List<Condicao> condicoes = new ArrayList<>();
 
@@ -44,6 +49,8 @@ public class Paciente extends Pessoa {
     public void setCondicoes(List<Condicao> condicoes) {
         this.condicoes = condicoes;
     }
+=======
+>>>>>>> Stashed changes
 
     @Column(length = 20, nullable = false)
     private String obs;
@@ -113,6 +120,7 @@ public class Paciente extends Pessoa {
     public void setDataUltimaConsulta(LocalDate dataUltimaConsulta) {
         this.dataUltimaConsulta = dataUltimaConsulta;
     }
+
     public List<Tarefa> getTarefas() {
         return tarefas;
     }
@@ -120,6 +128,5 @@ public class Paciente extends Pessoa {
     public void setTarefas(List<Tarefa> tarefas) {
         this.tarefas = tarefas;
     }
-
 
 }
